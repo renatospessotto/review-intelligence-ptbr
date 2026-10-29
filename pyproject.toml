@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "review-intel"
+version = "0.1.0"
+description = "Extração de aspectos em reviews de e-commerce em PT-BR: Laya e BERTimbau destilados do Claude, com cascata calibrada."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "torch",
+    "transformers",
+    "laya",
+    "huggingface_hub",
+    "safetensors",
+    "anthropic",
+    "pydantic",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "fastapi",
+    "uvicorn",
+    "gradio",
+]
+
+[project.optional-dependencies]
+# treino e preparo dos dados
+train = ["peft", "trl", "datasets", "accelerate", "kaggle", "pyarrow"]
+colab = ["review-intel[train]", "bitsandbytes"]
+# testes, notebooks e relatório
+dev = ["review-intel[train]", "pytest", "httpx", "tabulate", "matplotlib", "nbconvert", "ipykernel"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

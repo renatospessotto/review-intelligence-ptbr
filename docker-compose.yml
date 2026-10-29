@@ -1,0 +1,21 @@
+# docker compose up --build
+#   API:  http://localhost:8000/docs   (POST /extract)
+#   Demo: http://localhost:7860        (Laya x BERTimbau lado a lado)
+services:
+  api:
+    build: .
+    image: review-intel
+    ports: ["8000:8000"]
+    environment:
+      RI_APPROACH: ${RI_APPROACH:-laya-ft}   # ou bertimbau
+    volumes:
+      - hf-cache:/cache/hf
+  demo:
+    image: review-intel
+    depends_on: [api]
+    command: ["python", "-m", "review_intel.serving.gradio_app"]
+    ports: ["7860:7860"]
+    volumes:
+      - hf-cache:/cache/hf
+volumes:
+  hf-cache:

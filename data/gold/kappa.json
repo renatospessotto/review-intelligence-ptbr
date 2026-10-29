@@ -1,0 +1,22 @@
+{
+  "anotadores": [
+    "argon",
+    "opus-5.5"
+  ],
+  "n": 400,
+  "kappa": {
+    "entrega": 0.8997074801504388,
+    "produto": 0.9306610651684019,
+    "atendimento": 0.7253137579919489,
+    "preco": 0.854827002177595,
+    "embalagem": 0.8881588144834335,
+    "media": 0.8597336239943637
+  },
+  "concordancia_bruta": {
+    "entrega": 0.9325,
+    "produto": 0.9575,
+    "atendimento": 0.9275,
+    "preco": 0.985,
+    "embalagem": 0.99
+  }
+}
